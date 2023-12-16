@@ -1,15 +1,11 @@
-/*
- * You can use the following import statements
- * 
- * import org.springframework.web.server.ResponseStatusException;
- * import org.springframework.http.HttpStatus;
- * 
- */
 
 package com.example.movie;
 
 import com.example.movie.Movie;
 import com.example.movie.MovieRepository;
+
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.*;
 
@@ -27,8 +23,20 @@ public class MovieService implements MovieRepository {
         movieList.put(5, new Movie(5, "Jurassic World", "Chris Pratt"));
     }
 
-    // Do not modify the above code
+    @Override
+    public ArrayList<Movie> getAllMovies() {
+        Collection<Movie> moviesCollection = movieList.values();
+        ArrayList<Movie> movies = new ArrayList<>(moviesCollection);
+        return movies;
+    }
 
-    // Write your code here
+    @Override
+    public Movie getMovieById(int movieId) {
+        Movie movie = movieList.get(movieId);
+        if (movie == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return movie;
+    }
 
 }
