@@ -14,6 +14,7 @@ import java.util.*;
 public class MovieService implements MovieRepository {
 
     private static HashMap<Integer, Movie> movieList = new HashMap<>();
+    int uniqueMovieId = 6;
 
     public MovieService() {
         movieList.put(1, new Movie(1, "Avengers: Endgame", "Robert Downey Jr."));
@@ -37,6 +38,15 @@ public class MovieService implements MovieRepository {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return movie;
+    }
+
+    @Override
+    public Movie addMovie(Movie movie){
+        movie.setMovieId(uniqueMovieId);
+        movieList.put(uniqueMovieId, movie);
+        uniqueMovieId += 1;
+        return movie;
+
     }
 
 }

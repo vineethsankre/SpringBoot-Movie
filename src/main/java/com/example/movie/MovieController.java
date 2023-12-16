@@ -19,4 +19,9 @@ public class MovieController {
 
     }
 
+    @PostMapping("/movies")
+    public Movie addMovie(@RequestBody Movie movie){
+        return movieService.addMovie(movie);
+    }
+
 }
