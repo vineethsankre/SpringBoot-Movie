@@ -20,8 +20,13 @@ public class MovieController {
     }
 
     @PostMapping("/movies")
-    public Movie addMovie(@RequestBody Movie movie){
+    public Movie addMovie(@RequestBody Movie movie) {
         return movieService.addMovie(movie);
+    }
+
+    @PutMapping("/movies/{movieId}")
+    public Movie updatMovie(@PathVariable int movieId, @RequestBody Movie movie) {
+        return movieService.updateMovie(movieId, movie);
     }
 
 }
