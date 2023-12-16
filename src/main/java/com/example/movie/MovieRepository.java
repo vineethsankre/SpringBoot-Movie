@@ -12,4 +12,6 @@ public interface MovieRepository {
 
     Movie updateMovie(int movieId, Movie movie);
 
+    void deleteMovie(int movieId);
+
 }

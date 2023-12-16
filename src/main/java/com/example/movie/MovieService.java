@@ -65,4 +65,15 @@ public class MovieService implements MovieRepository {
         return existingMovie;
     }
 
+    @Override
+    public void deleteMovie(int movieId) {
+        Movie movie = movieList.get(movieId);
+        if (movie == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else {
+            movieList.remove(movieId);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+    }
+
 }

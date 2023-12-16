@@ -25,8 +25,13 @@ public class MovieController {
     }
 
     @PutMapping("/movies/{movieId}")
-    public Movie updatMovie(@PathVariable int movieId, @RequestBody Movie movie) {
+    public Movie updateMovie(@PathVariable int movieId, @RequestBody Movie movie) {
         return movieService.updateMovie(movieId, movie);
+    }
+
+    @DeleteMapping("/movies/{movieId}")
+    public void deleteMovie(@PathVariable int movieId){
+        movieService.deleteMovie(movieId);
     }
 
 }
